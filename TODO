@@ -1,0 +1,2 @@
+* Implement functionality with channels for better usability in GUI apps. This will have a large impact on how to use the library.
+* Add procs to determine the IP address from the open device handle.

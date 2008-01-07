@@ -1,0 +1,5 @@
+Install the WinPCAP library from http://www.winpcap.org
+
+Copy pcap library directory to the correct location for your Tcl installation.
+
+Try snoop.tcl from the examples directory.

@@ -1,0 +1,53 @@
+PCAP contains the following commands
+
+PCAP::devices src_interface_string
+  returns a list of all devices at <src_interface_string> where a single device is a list of the device name and description
+
+PCAP::new <command> <device>
+  creates the command <command> which is a handle to trace on device <device>
+
+handle recv
+  receive a packet from the handle 
+  
+  result is a list with {status ....}
+  status is either
+  timeout: 
+    the receive timed out 
+  eof:
+    end of offline trace was reached
+  ok 
+    list contains {ok seconds microseconds binary_pkt_data}
+
+  the returned seconds can be used by [clock format] to display the time/date
+
+handle send <packet>
+  send a packet to the handle. Note that it is the developers responsibilty to make sure the packet is a valid packet.
+  To create the packet use for example [binary format H* 00010101....]
+
+
+handle filter <filterexpression>
+  filter incoming packets at the kernel level, for supported filter expressions see the winpcap homepage.
+
+handle mac
+  retrun the mac address of the attached adapter as a list of decimal values
+
+when the handle is removed or redefined, the device will be closed   
+
+
+to extract basic packet information the following procs are defined in the packet namespace
+
+srcip <raw>
+  get the source ip address from packet <raw>
+dstip <raw>
+  get the destionation ip address from packet <raw>
+srcport <raw>
+  get the source port for packet <raw>
+dstport <raw>
+  get the destination port for packet <raw>
+
+Note that these procs will only return sensible values for UDP or TCP packets. If more information is needed, it is recommended to use a dedicated packet decode library
+
+to create new packets the following procs can be used
+
+dotted2raw <ip>
+  takes the IP address <ip> and retruns the raw data that can be included in a packet that will be sent out

@@ -1,0 +1,18 @@
+0.6
+* added check for sending an empty packet
+* added ::packet::dotted2raw to convert an IP address to its binary representation
+* added a mac handle subcommand to determine the MAC address of the active
+adapter
+	
+0.5
+* renamed packet source_ip and dest_ip procs to srcip and dstip
+* added srcport and dstport procs
+* added source reference for string2hex proc
+* implemented send command
+	
+0.4
+* Moved string2hex to packet namespace
+* added packet functions to get ip-dotted source and destination from received packets
+* errors will not exit Tcl anymore #1505910
+
+	vim:syntax=plain
